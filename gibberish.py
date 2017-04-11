@@ -35,26 +35,18 @@ vowels = ['a', 'e', 'i', 'o', 'u', 'ou', 'uou',
           'uu', 'y', 'ye']
 
 
-def generate_word():
-    """Returns a random consonant-vowel-consonant pseudo-word."""
-    return ''.join(random.choice(s) for s in (initial_consonants,
-                                              vowels,
-                                              final_consonants))
-
-
-def generate_words(wordcount):
-    """Returns a list of ``wordcount`` pseudo-words."""
-    return [generate_word() for _ in xrange(wordcount)]
-
-
-def console_main():
-    import sys
-    try:
-        wordcount = int(sys.argv[1])
-    except (IndexError, ValueError):
-        wordcount = 1
-    print(' '.join(generate_words(wordcount)))
-
+def generate_group1():
+    """Returns a generator of consonant-vowel-consonant pseudo-word."""
+    for i in initial_consonants:
+        for v in vowels:
+            for f in final_consonants:
+                yield ''.join([i,v,f])
 
 if __name__ == '__main__':
-    console_main()
+    for w in generate_group1():
+        print w
+        for v in vowels:
+            n = w + v
+            print n
+            for f in final_consonants:
+                print (n + f)

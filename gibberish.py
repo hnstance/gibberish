@@ -5,24 +5,34 @@ import random
 __all__ = ('generate_word', 'generate_words')
 
 initial_consonants = list(set(string.ascii_lowercase) - set('aeiou')
-                      # remove those easily confused with others
-                      - set('qxc')
                       # add some crunchy clusters
-                      | set(['bl', 'br', 'cl', 'cr', 'dr', 'fl',
-                             'fr', 'gl', 'gr', 'pl', 'pr', 'sk',
+                      | set(['bl', 'br', 'cl', 'cr', 'ch', 'dr', 
+                             'dj', 'fl', 'fr', 'gl', 'gh', 'gr',
+                             'gn', 'll', 'kr', 'kh', 'kw', 'pl',
+                             'pr', 'ps', 'pw', 'ph', 'rw', 'sk',
                              'sl', 'sm', 'sn', 'sp', 'st', 'str',
-                             'sw', 'tr', 'ch', 'sh'])
+                             'sw', 'sh', 'sr', 'sch', 'squ',
+                             'tr', 'th', 'qu', 'qw', 'wr', 'wh'])
                       )
 
 final_consonants = list(set(string.ascii_lowercase) - set('aeiou')
                     # remove the confusables
-                    - set('qxcsj')
+                    - set('qj')
                     # crunchy clusters
-                    | set(['ct', 'ft', 'mp', 'nd', 'ng', 'nk', 'nt',
-                           'pt', 'sk', 'sp', 'ss', 'st', 'ch', 'sh'])
+                    | set(['ct', 'ch', 'ck', 'ft', 'lk', 'lm', 
+                           'ld', 'lp', 'lb', 'lt', 'mp', 'mn', 
+                           'nd', 'ng', 'nk', 'nt', 'nh', 'nm',
+                           'pt', 'ph', 'rb', 'rg', 'rk', 'rl',
+                           'rf', 'rn', 'rm', 'rc', 'rs', 'rq',
+                           'rt', 'rp', 'rd', 'rr', 'sk', 'sn',
+                           'sm', 'sp', 'ss', 'st', 'sh', 'tt',
+                           'tch', 'tck', 'wr', 'wk', 'wl'])
                     )
 
-vowels = 'aeiou'
+vowels = ['a', 'e', 'i', 'o', 'u', 'ou', 'uou', 
+          'au', 'eu', 'ae', 'iu', 'ui', 'ie', 'oi',
+          'ue', 'ea', 'ao', 'oa', 'ee', 'oo', 'ii',
+          'uu', 'y', 'ye']
 
 
 def generate_word():
